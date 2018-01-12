@@ -1,0 +1,55 @@
+{
+  "name": "egg-pg",
+  "version": "0.0.1",
+  "description": "PostgreSQL plugin for egg",
+  "eggPlugin": {
+    "name": "pg"
+  },
+  "keywords": [
+    "egg",
+    "eggPlugin",
+    "egg-plugin",
+    "postgreSQL",
+    "database"
+  ],
+  "dependencies": {
+    "pg": "^7.4.1"
+  },
+  "devDependencies": {
+    "autod": "^2.8.0",
+    "egg": "^1.4.0",
+    "egg-bin": "^3.4.2",
+    "egg-ci": "^1.7.0",
+    "egg-mock": "^3.7.2",
+    "eslint": "^3.19.0",
+    "eslint-config-egg": "^4.2.0",
+    "supertest": "^3.0.0",
+    "utility": "^1.12.0"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "scripts": {
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod"
+  },
+  "ci": {
+    "version": "6, 7",
+    "license": true,
+    "services": "pg"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hujiulong/egg-pg.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hujiulong/egg-pg/issues"
+  },
+  "homepage": "https://github.com/hujiulong/egg-pg#readme",
+  "author": "hujiulong",
+  "license": "MIT"
+}
