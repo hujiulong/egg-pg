@@ -44,6 +44,8 @@ exports.pg = {
   app: true,
   // load into agent, default is close
   agent: false,
+  // use pool or client, default is true for pool
+  pool: true,
 };
 ```
 
@@ -51,10 +53,12 @@ Usage:
 
 ```js
 app.pg.query(sql, values); // you can access to simple database instance by using app.pg.
+app.pg.get('db1').query(sql,values); // if there is multiple db
 ```
 e.g:
 ```js
 app.pg.query('SELECT * FROM core.user WHERE id = $1', [ userId ]);
+app.pg.get('db1').query('SELECT * FROM core.user WHERE id = $1', [ userId ]);
 ```
 
 ## License

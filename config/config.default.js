@@ -7,6 +7,7 @@ exports.pg = {
   },
   app: true,
   agent: false,
+  pool: true,
 
   // Single Database
   // client: {
