@@ -4,28 +4,28 @@ declare module 'egg' {
 
   // extend app
   interface Application {
-    pg?: Client,
+    pg: Client,
   }
 
-  // // extend agent
-  // interface Agent{
-  //   pg?: Client,
-  // }
+  // extend agent
+  interface Agent{
+    pg: Client,
+  }
 
-  // // extend context
-  // interface Context {
-  // }
+  // extend context
+  interface Context {
+  }
 
   // extend your config
   interface EggAppConfig {
     pg: {
-        client: ClientConfig
-        clients: {
+        client?: ClientConfig,
+        clients?: {
             [key: string]: ClientConfig,
         },
-        app: Boolean,
-        agent: Boolean,
-        pool: Boolean,
+        app?: Boolean,
+        agent?: Boolean,
+        pool?: Boolean,
     },
   }
 
