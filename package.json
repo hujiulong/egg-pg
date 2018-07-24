@@ -1,6 +1,6 @@
 {
   "name": "egg-pg",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "PostgreSQL plugin for egg",
   "eggPlugin": {
     "name": "pg"
@@ -13,6 +13,7 @@
     "database"
   ],
   "dependencies": {
+    "@types/pg": "^7.4.10",
     "pg": "^7.4.1"
   },
   "devDependencies": {
