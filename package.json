@@ -1,6 +1,6 @@
 {
   "name": "egg-pg",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "PostgreSQL plugin for egg",
   "eggPlugin": {
     "name": "pg"
@@ -14,7 +14,8 @@
   ],
   "dependencies": {
     "@types/pg": "^7.4.10",
-    "pg": "^7.4.1"
+    "pg": "^7.4.1",
+    "pg-cursor": "^2.0.0"
   },
   "devDependencies": {
     "autod": "^2.8.0",

@@ -52,13 +52,34 @@ exports.pg = {
 Usage:
 
 ```js
-app.pg.query(sql, values); // you can access to simple database instance by using app.pg.
-app.pg.get('db1').query(sql,values); // if there is multiple db
+const { rows } = await app.pg.query(sql, values); // you can access to simple database instance by using app.pg.
+const { rows } = app.pg.get('db1').query(sql,values); // if there is multiple db
+// @see https://node-postgres.com/api/cursor
+// if there are large datas to load
+const cursor = await app.pg.cursor(sql, values);
+while(true){
+    const rows = await cursor.read(rowCount); // here we make it resp promise
+    if(!rows.length){
+        cursor.close();
+        break;
+    }
+    // use the rows here
+}
 ```
 e.g:
 ```js
-app.pg.query('SELECT * FROM core.user WHERE id = $1', [ userId ]);
-app.pg.get('db1').query('SELECT * FROM core.user WHERE id = $1', [ userId ]);
+const { rows } = await app.pg.query('SELECT * FROM core.user WHERE id = $1', [ userId ]);
+const { rows } = await app.pg.get('db1').query('SELECT * FROM core.user WHERE id = $1', [ userId ]);
+
+const cursor = await app.pg.cursor('SELECT * FROM core.user WHERE id = $1', [ userId ]);
+while(true){
+    const rows = await cursor.read(rowCount);
+    if(!rows.length){
+        cursor.close();
+        break;
+    }
+    // ...
+}
 ```
 
 ## License
