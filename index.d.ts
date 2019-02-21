@@ -1,15 +1,24 @@
 import { Client, ClientConfig } from 'pg';
 
+
+interface Cursor {
+  read: (count:number) => Promise<any[]>,
+  close: () => void,
+}
+interface ClientPlus extends Client {
+  cursor: (sql:string, values:any[]) => Cursor,
+}
+
 declare module 'egg' {
 
   // extend app
   interface Application {
-    pg: Client,
+    pg: ClientPlus,
   }
 
   // extend agent
   interface Agent{
-    pg: Client,
+    pg: ClientPlus,
   }
 
   // extend context
@@ -30,3 +39,4 @@ declare module 'egg' {
   }
 
 }
+
